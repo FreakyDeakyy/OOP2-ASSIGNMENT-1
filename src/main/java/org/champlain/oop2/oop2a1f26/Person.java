@@ -2,15 +2,12 @@ package org.champlain.oop2.oop2a1f26;
 
 import java.time.LocalDate;
 
-public class Person {
+public final class Person {
 
-  public boolean isPurchasedParkingPass() {
-    return true;
-  }
-
-  private String aName;
-  private LocalDate aDOB;
-  private String aEmailAddress;
+  private final String aName;
+  private final LocalDate aDOB;
+  private final String aEmailAddress;
+  private boolean aPurchasedParkingPass = false;
 
   public Person(String pPersonName, LocalDate pDOB, String pEmailAddress) {
     this.aName = pPersonName;
@@ -18,19 +15,24 @@ public class Person {
     this.aEmailAddress = pEmailAddress;
   }
 
+  public boolean isPurchasedParkingPass() {
+    return aPurchasedParkingPass;
+  }
+
   public boolean purchaseParkingPass() {
-    return true;
+    this.aPurchasedParkingPass = true;
+    return aPurchasedParkingPass;
   }
 
   public String getName() {
-    return "John Doe";
+    return this.aName;
   }
 
   public LocalDate getDOB() {
-    return LocalDate.of(1990, 1, 1);
+    return this.aDOB;
   }
 
   public String getEmailAddress() {
-    return "";
+    return this.aEmailAddress;
   }
 }
