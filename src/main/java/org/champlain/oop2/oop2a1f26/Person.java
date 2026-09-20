@@ -14,8 +14,15 @@ public final class Person {
     if (pPersonName == null || pPersonName.isBlank()) {
       throw new IllegalArgumentException("Name cannot be null or blank.");
     }
-    if (pDOB == null) {
-      throw new IllegalArgumentException("Date of birth cannot be null.");
+    if (
+      pDOB == null ||
+      pDOB.isAfter(LocalDate.now()) ||
+      //This is the oldest person currently alive, if your older, lets call guinness
+      pDOB.isBefore(LocalDate.of(1909, 8, 21))
+    ) {
+      throw new IllegalArgumentException(
+        "Date of birth cannot be null,\n in the future, or before 1909/8/21."
+      );
     }
     if (pEmailAddress == null || pEmailAddress.isBlank()) {
       throw new IllegalArgumentException(
